@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+    <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+    <header id="header">
+        <nav id="nav">
+            <p class="linksHolder"><a href="../index.html" class="navLinks">Home</a></p>
+            <p class="linksHolder"><a href="./shoppingCart.html" class="navLinks">Shopping Cart</a></p>
+            <p class="linksHolder"><a href="./livingRoom.html" class="navLinks">Living Room</a></p>
+            <p class="linksHolder"><a href="./kitchen.html" class="navLinks">Kitchen</a></p>
+            <p class="linksHolder"><a href="./dinette.html" class="navLinks">Dinette</a></p>
+            <p class="linksHolder"><a href="./carpets.html" class="navLinks">Carpets</a></p>
+            <p class="linksHolder"><a href="./products.html" class="navLinks">Products</a></p>
+            <a href="../index.html" id="logoHolder"><img src="https://i.ibb.co/3C7y7BB/Black-logo-no-background.png" id="logo"></a>
+            <p class="linksHolder" style="margin-left: 29%;"><a href="./contact.html" class="navLinks">Contact</a></p>
+        </nav>
+        <div id="queryNav">
+            <i class="fa fa-bars" style="font-size: 30px;" id=queryBtn></i>
+            <div id="queryLinks">
+                <a href="../index.html" class="navLinks2">Home</a>
+                <a href="./shoppingCart.html" class="navLinks2">shopping Cart</a>
+                <a href="./livingRoom.html" class="navLinks2">Living Room</a>
+                <a href="./kitchen.html" class="navLinks2">Kitchen</a>
+                <a href="./dinette.html" class="navLinks2">Dinette</a>
+                <a href="./carpets.html" class="navLinks2">Carpets</a>
+            <a href="./products.html" class="navLinks2">Products</a>
+            <button type="button" id="closeNav" style=" border: 1px solid black; background-color: white;height: 2vh;">
+                    <i class="fa fa-sort-up" style="font-size: 20px;color: black;margin-top: .5%;cursor: pointer;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main style="margin-top: 10%;">
+        <h1 style="text-align: center;">Add Contact</h1>
+        <h3 style="text-align: center;">Enter your details to send your review</h3>
+        <div style="border: 1.2px solid black;border-radius: 20px;width: 30%;margin-left: 35%;padding: 5px;"> 
+        <form id="addProduct">
+            <label>Name:</label>
+            <input type="text" name="name" style="border-radius: 3px;" id="name" required><br>
+            <label>Last name:</label>
+            <input type="text" name="lastName" style="border-radius: 3px;" id="lastName" required><br>
+            <label>messege:</label>
+            <input type="text" name="messege" id="messege" style="border-radius: 3px;height: 30px;" required ><br>
+            <button type="submit" value="addProd" style="border-radius: 5px;background-color: white;width: 40%;margin-left: 30%;"><b>post</b></button>
+        </form>
+    </div>
+        <h4 id="response" style="text-align: center;"></h4>
+        <button type="button"style="margin-left: 46%;border-radius: 8px;"><a href="./contacts.html" style="text-decoration: none;color: black;font-size: larger;">Get Contacts</a></button>
+    </main>
+    <footer id="footer">
+        <p>@copyrights belong to Zaro's & Design only</p>
+    </footer>
+    
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"
+    integrity="sha512-Idr7xVNnMWCsgBQscTSCivBNWWH30oo/tzYORviOCrLKmBaRxRflm2miNhTFJNVmXvCtzgms5nlJF4az2hiGnA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+    <script>
+        document.getElementById("addProduct").addEventListener("submit",addProd);
+
+        function addProd(e){
+            e.preventDefault()
+            const name = document.getElementById("name").value
+            const lastName = document.getElementById("lastName").value
+            const messege = document.getElementById("messege").value
+            axios
+            .post("/contact",{
+                name:name,lastName:lastName,messege:messege
+            })
+            .then(function(response){
+                document.getElementById("response").innerText = "contact added successfuly";
+                setTimeout(() => {
+                    document.getElementById("response").innerText = "";
+                }, 800);
+            })
+            .catch(function(error) {
+                console.log(error); 
+            })
+        }
+
+        function getContacts() {
+            document.getElementById("contitle").innerText = "All Contacts"
+            document.getElementById("contact").innerHTML += "";
+            axios.get("/contact")
+            .then((res)=>{
+                for (const element of res.data) {
+                    document.getElementById("contact").innerHTML += `<div id="conCon">
+                        <p style="font-size:20px">Name: ${element.name}</p>
+                        <p style="font-size:20px">Last Name: ${element.lastName}</p>
+                        <p style="font-size:20px">Message: ${element.messege}</p>
+                        </div>
+                        `; 
+                    }
+                })
+                .catch(err=>{throw err})
+            }
+    </script>
+</body>
+</html>

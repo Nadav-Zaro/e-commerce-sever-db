@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div style="display: flex;justify-content: space-between">
+            <a href="./products.html" style="text-decoration: none;color: black;font-size: 25px;">
+            <i class="fa fa-reply"></i> Back to products</a>
+            <a href="../index.html" style="text-decoration: none;color: black;font-size: 25px;">
+                <i class="fa fa-reply"></i> Home page</a>
+        </div>
+        <h1 style="text-align: center">Zaro's & Design</h1>
+          <h2 style="text-align: center; color: rgba(0, 0, 0, 0.534)">
+            Welcome Admin update your product
+          </h2>
+        </header>
+    <main>
+      <h3 style="text-align: center">Enter  Product Details ...</h3>
+      <form id="updateProduct" style="text-align: center;display: flex;flex-direction: column;width: 35%;
+    margin-left: 32.5%;border:2px inset grey;border-radius: 8px;padding: 8px;box-shadow: 2px 2px 2px grey;">
+        <label>id:</label>
+        <input type="text" id="id" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <label>furName:</label>
+        <input type="text" id="furName" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <label>price:</label>
+        <input type="text" id="price" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <label>description:</label>
+        <input type="text" id="description" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <label>category:</label>
+        <input type="text" id="category" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <label>pictures:</label>
+        <input type="text" placeholder="link1" id="picture1" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <input type="text" placeholder="link2" id="picture2" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+        <button type="submit" value="addProd" style="width:30%;margin-left: 35%;border-radius: 3px;">update</button>
+    </form>
+    <div id="updatedProduct" style="text-align:center"></div>
+</main>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"
+    integrity="sha512-Idr7xVNnMWCsgBQscTSCivBNWWH30oo/tzYORviOCrLKmBaRxRflm2miNhTFJNVmXvCtzgms5nlJF4az2hiGnA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+    <script>
+        document.getElementById("updateProduct").addEventListener("submit",updateProd);
+
+        function updateProd(e){
+            e.preventDefault()
+            const id = document.getElementById("id").value
+            const furName = document.getElementById("furName").value
+            const price = document.getElementById("price").value
+            const description = document.getElementById("description").value
+            const category = document.getElementById("category").value
+            const picture1 = document.getElementById("picture1").value
+            const picture2 = document.getElementById("picture2").value
+            if (id == undefined || id.length == 0) {
+                return error;
+            }
+            axios
+            .patch(`/products/${id}`,{
+                id,furName,price,description,category,pictures:[picture1,picture2]
+            })
+            .then(function(response){
+               document.getElementById("updatedProduct").innerHTML = `<h2>Product updated</h2>`; 
+               setTimeout(() => {
+                document.getElementById("updatedProduct").innerHTML = "";
+               }, 1000);
+            })
+            .catch(function(error) {
+                console.log(error); 
+            })
+        }
+    </script>
+</body>
+</html>

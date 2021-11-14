@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .prodList{
+            border:1.5px solid black;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" style="text-decoration: none;color: black;font-size: 25px;"><i class="fa fa-reply"></i> Home page</a>
+    <h1 style="text-align: center;">Zaro's & Design Products List</h1>
+    <h2 style="text-align: center;color: rgba(0, 0, 0, 0.534);">Welcome to admin manegment</h2>
+    <div style="display: flex;justify-content: space-around">
+        <h1 style="text-align: center;"><a href="./addProduct.html" style="color: black;text-decoration: none;">Add Product</a></h1> 
+        <h1 style="text-align: center;"><a href="./updateProduct.html" style="color: black;text-decoration: none;">Update Product</a></h1> 
+    </div>
+    <section id="productList" style="width: 90%;margin-left: 5%;"></section>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <Script>
+        let prod;
+        axios.get("/products")
+        .then((res)=>{
+            prod = res.data;
+            prod.forEach((element,index) => {
+                document.getElementById("productList").innerHTML +=`<div class="prodList">
+                    <div><p>_id: ${element._id}</p>
+                <p>id: ${element.id}</p>
+                <p>furName: ${element.furName}</p>
+                <p>price: ${element.price}$</p>
+                <p>category: ${element.category}</p>
+                <p>description: ${element.description}</p>
+                <p>pictures:<img src=" ${element.pictures[0]}" style="width:200px;height:100px">,
+                    <img src=" ${element.pictures[1]}" style="width:200px;height:100px"></p></div>
+                <i class="fa fa-minus" style="margin-right:1%" onclick="deleteProd(${index})"></i>
+                </div>
+                `
+            });
+        })
+        .catch(err =>{throw err})
+
+        function deleteProd(i) {
+    axios.delete(`/products/${prod[i].id}`)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            throw err
+        })
+}
+    </Script>
+</body>
+</html>

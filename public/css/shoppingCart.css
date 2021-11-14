@@ -1,0 +1,319 @@
+body {
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+}
+
+#queryNav{
+    top: 13.5%;
+    position: fixed;
+    z-index: 1;
+    visibility: hidden;
+    width: 100%;
+
+}
+
+#queryLinks{
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+.navLinks2{
+    text-decoration: none;
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+#nav {
+    position: fixed;
+    display: flex;
+    top: 0%;
+    width: 100%;
+    align-items: flex-end;
+    background: rgba(255, 255, 255, 0.833);
+    height: 18vh;
+    border-bottom: 2px inset rgba(0, 0, 0, 0.533);
+    z-index: 1;
+}
+
+#logoHolder {
+    height: 100%;
+}
+
+#logo {
+    height: 90%;
+    width: 100%;
+    margin-left: 12%;
+}
+
+.linksHolder {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.89);
+    margin-left: 1%;
+    transition: .5s;
+}
+
+.linksHolder:hover {
+    transform: scale(1.05);
+    border-radius: 7px;
+    border-bottom: 3px inset rgba(0, 0, 0, 0.89);
+}
+
+.navLinks {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+#open {
+    margin-top: 12%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: lighter;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#shoppingCart {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#table {
+    padding-right: 2%;
+    width: 62%;
+    border-top: 1px solid black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+th {
+    display: flex;
+    border-bottom: 1px solid rgb(167, 162, 162);
+}
+
+.furInfo {
+    margin-top: 2%;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    overflow: hidden;
+    padding-bottom: 2%;
+    border-bottom: 1px solid rgb(167, 162, 162);
+}
+
+.furImg {
+    width: 35%;
+    opacity: .7;
+}
+
+.furImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.furDetail {
+    padding-left: 7%;
+    width: 55%;
+}
+
+.removeItem {
+    background-color: white;
+    transition: .5s;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.removeItem:hover {
+    border-radius: 5px;
+    border: 1.5px solid black;
+}
+
+.furPrice {
+    width: 10%;
+}
+
+#total {
+    width: 28%;
+    border-top: 1px solid black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orders {
+    margin-left: 2.5%;
+    margin-top: 3px;
+    width: 95%;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+#formContainer{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.945);
+    margin-right: 36.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: -3%;
+    margin-left: 35%;
+    visibility: hidden;
+}
+
+input{
+    border: 0px solid black;
+    border-bottom: 1px solid black;
+}
+
+#exit{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 5%;
+    padding-right: 3px;
+}
+
+#topSales{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+    height: 70vh;
+    margin-left: 63%;
+    margin-top:40%;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+#topSalesCon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+}
+
+.topFur{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2px;
+    height: 22%;
+    width: 90%;
+    border-bottom: 1px solid black;
+    transition: .5s;
+}
+
+.topFur:hover{
+    transform: scale(1.05);
+    border-radius: 10px;
+}
+
+#form{
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0%;
+}
+
+#orderSent{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.904);
+    color: rgba(0, 0, 0, 0.911);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    transition: 1s;
+    visibility: hidden;
+    transform: scale(0.1);
+}
+
+
+#footer {
+    width: 100%;
+    margin-top: 12%;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+@media screen and (max-width:1024px) {
+    #topSales {
+        top: 40%;
+    }
+    .topFur{width: 100%;}
+    #footer {
+        margin-top: 18%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .topFur{width: 100%;font-size: 10px;}
+    .furPrice {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width:425px) {
+    #nav{
+        height: 10vh;
+    }
+    #open {
+        margin-top: 27%;
+        border-bottom: 1px solid black;
+    }
+    #table {
+        top: 8%;
+        width: 90%;
+    }
+    .furPrice {
+        width: 20%;
+    }
+    #total {
+        width: 90%;
+    }
+    #queryNav{
+        visibility: visible;
+        margin-top: -15%;
+        color: white;
+    }
+    #queryBtn{
+        color: black;
+    }
+    .linksHolder {
+        visibility: hidden;
+        transition: 0s;
+    }
+    #logo{
+        margin-left: -100%;
+        width: 120%;
+    }
+    #formContainer{
+        top: 12%;
+        width: 70%;
+        left: -20%;
+    }
+}

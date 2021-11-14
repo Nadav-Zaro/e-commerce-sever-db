@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaro's $ Design - Kitchen Selection</title>
+    <link rel="stylesheet" href="../css/kitchen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav id="nav">
+            <p class="linksHolder"><a href="../index.html" class="navLinks">Home</a></p>
+            <p class="linksHolder"><a href="./shoppingCart.html" class="navLinks">Shopping Cart</a></p>
+            <p class="linksHolder"><a href="./livingRoom.html" class="navLinks">Living room</a></p>
+            <p class="linksHolder"><a href="./dinette.html" class="navLinks">Dinette</a></p>
+            <p class="linksHolder"><a href="./carpets.html" class="navLinks">Carpets</a></p>
+            <p class="linksHolder"><a href="products.html" class="navLinks">Products</a></p>
+            <a href="../index.html" id="logoHolder"><img src="https://i.ibb.co/V9YTHP1/Color-logo-no-background.png" id="logo"></a>
+            <p class="linksHolder" style="margin-left: 32%;"><a href="./contact.html" class="navLinks">Contact</a></p>
+        </nav>
+        <div id="queryNav">
+            <i class="fa fa-bars" style="font-size: 30px;" id=queryBtn></i>
+            <div id="queryLinks">
+                <a href="../index.html" class="navLinks2">Home</a>
+                <a href="./shoppingCart.html" class="navLinks2">Shopping Cart</a>
+                <a href="./livingRoom.html" class="navLinks2">Living room</a>
+                <a href="./dinette.html" class="navLinks2">Dinette</a>
+                <a href="./carpets.html" class="navLinks2">Carpets</a>
+            <a href="products.html" class="navLinks2">Products</a>
+            <a href="./contact.html" class="navLinks2">Contact</a>
+            <button type="button" id="closeNav" style=" border: 1px solid rgba(65, 147, 224, 0.833); background-color: white;height: 2vh;">
+                    <i class="fa fa-sort-up" style="font-size: 20px;color: rgba(65, 147, 224, 0.833);margin-top: .5%;cursor: pointer;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="upDoc">
+            <form id="updateProduct" style="text-align: center;display: flex;flex-direction: column;width: 50%;
+            border:2px inset grey;border-radius: 8px;padding: 8px;box-shadow: 2px 2px 2px grey;">
+                <h2>Update Product</h2>
+                <label>id:</label>
+                <input type="text" id="id" required style="width:50%;margin-left:25%;border-radius: 3px;"/>
+                <label>furName:</label>
+                <input type="text" id="furName" required style="width:50%;margin-left:25%;border-radius: 3px;"/>
+                <label>price:</label>
+                <input type="text" id="price" required style="width:50%;margin-left:25%;border-radius: 3px;"/>
+                <label>description:</label>
+                <input type="text" id="description" required style="width:50%;margin-left:25%;border-radius: 3px;"/>
+                <label>category:</label>
+                <input type="text" id="category" required style="width:50%;margin-left:25%;border-radius: 3px;"/>
+                <label>pictures:</label>
+                <input type="text" placeholder="link1" id="picture1" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+                <input type="text" placeholder="link2" id="picture2" required style="width:50%;margin-left:25%;border-radius: 3px;"/><br />
+                <button type="submit" value="updateProd" style="width:30%;margin-left: 35%;border-radius: 3px;">update</button>
+            </form>
+            <div style="width:50%;text-align: center;" id="prodContainer">
+            </div>
+            <i class="fa fa-times" id="close"></i>
+        </div>
+        <section id="open">
+            <img id="openImg" src="https://i.ibb.co/9tHz3CJ/kitchen.jpg">
+            <div id="openHeader">
+                <h1 class="openText">Zaro's <span>& </span>Design</h1>
+                <h3 class="openText" style="margin-left: 15%;width: 60%;padding: 14px;">Kitchen's <span>Collection</span> that'll blow <span>your</span> mind</h3>
+                <h1 class="openText" style="margin-left: 55%;">Check <span>it</span> out <span><i class='fa fa-cutlery' style="font-size:32px"></i></span>
+                </h1>
+            </div>
+        </section>
+        <h1 style="text-align: center;font-size: 30px;font-weight: lighter;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 5%;color: rgba(0, 0, 0, 0.919);">Our Kitchen's Collection</h1>
+        <div id="furnitures2" ></div>
+    </main>
+    <footer id="footer">
+        <p>@copyrights belong to Zaro's & Design only</p>
+    </footer>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/kitchen.js"></script>
+</body>
+
+</html>

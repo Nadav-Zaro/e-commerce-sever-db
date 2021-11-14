@@ -1,0 +1,43 @@
+GET http://localhost:2000/products/carpets
+
+###
+
+GET http://localhost:2000/cart
+
+###
+
+
+GET http://localhost:2000/products/product/618adf32872c5cf1ebacc66c
+
+###
+
+POST http://localhost:2000/contact
+Content-Type: application/json
+
+{
+  "id":999
+}
+
+###
+
+PATCH http://localhost:2000/cart/update/4
+Content-Type: application/json
+
+{"furName":"blala"}
+
+###
+
+PATCH http://localhost:2000/cart/delete/1
+
+###
+
+DELETE  http://localhost:2000/products/6188c8b8f1adb7af3cad723e
+
+###
+
+PATCH http://localhost:2000/products/888
+Content-Type: application/json
+
+{
+  "id":777
+}

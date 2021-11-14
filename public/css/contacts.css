@@ -1,0 +1,89 @@
+body {
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+}
+
+#queryNav{
+    top: 13.5%;
+    position: fixed;
+    z-index: 1;
+    visibility: hidden;
+    width: 100%;
+
+}
+
+#queryLinks{
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+.navLinks2{
+    text-decoration: none;
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+#nav {
+    position: fixed;
+    display: flex;
+    top: 0%;
+    width: 100%;
+    align-items: flex-end;
+    background: rgba(255, 255, 255, 0.833);
+    height: 18vh;
+    border-bottom: 2px inset rgba(0, 0, 0, 0.533);
+    z-index: 1;
+}
+
+#logoHolder {
+    height: 100%;
+}
+
+#logo {
+    height: 90%;
+    width: 100%;
+}
+
+.linksHolder {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.89);
+    margin-left: .4%;
+    transition: .5s;
+}
+
+.linksHolder:hover {
+    transform: scale(1.05);
+    border-radius: 7px;
+    border-bottom: 3px inset rgba(0, 0, 0, 0.89);
+}
+
+.navLinks {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+#contact{
+    width: 70%;
+    margin-left: 15%;
+    border: 1.2px inset rgb(39, 36, 36);
+    border-radius: 20px;
+}
+
+#details{
+    padding: 5px;
+}
+
+#footer {
+    width: 100%;
+    margin-top: 12%;
+    border-top: 1px solid black;
+    text-align: center;
+}
