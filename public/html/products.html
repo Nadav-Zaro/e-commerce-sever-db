@@ -53,6 +53,7 @@
         .catch(err =>{throw err})
 
         function deleteProd(i) {
+            console.log(prod[i].id);
     axios.delete(`/products/${prod[i].id}`)
         .then((res) => {
             console.log(res);

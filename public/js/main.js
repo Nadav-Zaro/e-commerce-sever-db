@@ -13,7 +13,7 @@ function showCategory(cat, div) {
         .then((res) => {
             catList = res.data;
             catList.forEach((element, index) => {
-                div.innerHTML += `<div class="card">
+                div.innerHTML += `<div class="card" id="${index}">
             <div class="picHolder">
             <img class="cardPic firstPic" src="${element.pictures[0]}">
             <img class="cardPic secondPic" src="${element.pictures[1]}">
@@ -62,16 +62,23 @@ function upDocs(i) {
         const category = document.getElementById("category").value
         const picture1 = document.getElementById("picture1").value
         const picture2 = document.getElementById("picture2").value
+        document.getElementById("upd").innerText = "Product updated";
         axios
             .patch(`/products/${catList[i]._id}`, {
-                 furName:furName, price:price, description:description, category:category, pictures: [picture1, picture2]
+                furName: furName, price: price, description: description, category: category, pictures: [picture1, picture2]
             })
             .then(function (response) {
-                console.log(response);
-                document.getElementById("upd").innerText = "Product updated";
+                let updated = JSON.parse(response.config.data);
                 setTimeout(() => {
                     document.getElementById("upd").innerText = "";
-                }, 1000);
+                    prodContainer.innerHTML = `<img src="${updated.pictures[0]}" style="width:85%;height: 50%;border-radius:5px;" id="img";>
+                        <h2 id="name">${updated.furName}</h2>
+                        <p id="id">Description:${updated.description}</p>
+                        <p id="Category">Category:${updated.category}</p>
+                        <p id="Price">Price:${updated.price}$</p><br>
+                        <p id="upd"></p>`;
+                }, 500);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -113,6 +120,8 @@ function deleteProdById(i) {
         .catch((err) => {
             throw err
         })
+        document.getElementById(`${i}`).innerHTML = "";
+        document.getElementById(`${i}`).style.display = "none";
 }
 
 let cartId = 0;
@@ -132,9 +141,9 @@ function showCart() {
             cart = res.data[0].cart;
             cart.forEach((element, index) => {
                 console.log(element);
-                sum += element.price
+                sum += Number(element.price);
                 table.innerHTML += `                
-            <tr class="row" id="${element.id}">
+            <tr class="row" id="${index}">
             <td class="item">
                 <div class="furInfo">
                     <div class="furImg">
@@ -186,6 +195,7 @@ function removeFromCart(i) {
         .catch((err) => {
             throw err
         })
+    document.getElementById(`${i}`).innerHTML = "";
 }
 
 
@@ -232,6 +242,11 @@ function removeAllItems() {
             .catch((err) => {
                 throw err
             })
+        table.innerHTML = "";
+        delivery.innerText = `0$`;
+        summary2.innerText = `0$`;
+        summary.innerText = `0$`;
+        totalItems.innerText = "0$";
     })
 }
 
