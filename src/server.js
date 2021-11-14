@@ -22,7 +22,6 @@ app.delete("/products/:id",(req,res)=>{
 })
 
 app.patch("/products/:id",(req,res)=>{
-    console.log(req.body);
     impFunctions.updateProduct(req,res)
 })
 
@@ -31,20 +30,8 @@ app.post("/html/addProduct.html",(req,res)=>{
 })
 
 // Show Category//
-app.get("/products/living-room", (req,res)=>{
-    impFunctions.getByCategory(req,res,"living-room")
-})
-
-app.get("/products/dinette", (req,res)=>{
-    impFunctions.getByCategory(req,res,"dinette")
-})
-
-app.get("/products/kitchens", (req,res)=>{
-    impFunctions.getByCategory(req,res,"kitchens")
-})
-
-app.get("/products/carpets", (req,res)=>{
-    impFunctions.getByCategory(req,res,"carpets")
+app.get("/products/:category", (req,res)=>{
+    impFunctions.getByCategory(req,res)
 })
 
 // Cart//

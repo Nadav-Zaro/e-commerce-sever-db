@@ -1,4 +1,4 @@
-GET http://localhost:2000/products/carpets
+GET http://localhost:2000/products
 
 ###
 

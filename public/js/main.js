@@ -39,7 +39,6 @@ function showCategory(cat, div) {
 
 function upDocs(i) {
     upDoc.style.visibility = "visible";
-    // document.getElementById("id").value = catList[i].id;
     document.getElementById("furName").value = catList[i].furName;
     document.getElementById("price").value = catList[i].price;
     document.getElementById("description").value = catList[i].description;
@@ -57,21 +56,15 @@ function upDocs(i) {
     document.getElementById("updateProduct").addEventListener("submit", update);
     function update(e) {
         e.preventDefault()
-        // const id = document.getElementById("id").value
         const furName = document.getElementById("furName").value
         const price = document.getElementById("price").value
         const description = document.getElementById("description").value
         const category = document.getElementById("category").value
         const picture1 = document.getElementById("picture1").value
         const picture2 = document.getElementById("picture2").value
-        console.log(category);
-        if (id == undefined || id.length == 0) {
-            return error;
-        }
-        catList[i].id
         axios
-            .patch(`/products/${catList[i].id}`, {
-                id:id, furName:furName, price:price, description:description, category:category, pictures: [picture1, picture2]
+            .patch(`/products/${catList[i]._id}`, {
+                 furName:furName, price:price, description:description, category:category, pictures: [picture1, picture2]
             })
             .then(function (response) {
                 console.log(response);

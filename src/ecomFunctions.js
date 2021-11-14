@@ -34,10 +34,11 @@ function getProductById(req, res) {
 }
 
 function getByCategory(req, res, cat) {
+    category = req.params.category
     MongoClient.connect(mongoURL)
         .then((db) => {
             const dbo = db.db(dbName)
-            dbo.collection(collName).find({ "category": cat }).toArray()
+            dbo.collection(collName).find({ "category": category }).toArray()
                 .then(docs => res.send(docs))
         })
         .catch((err) => {
@@ -93,7 +94,7 @@ function updateProduct(req, res) {
     MongoClient.connect(mongoURL)
         .then((db) => {
             const dbo = db.db(dbName)
-            dbo.collection(collName).findOneAndUpdate({ id: id }, { $set: upDoc })
+            dbo.collection(collName).findOneAndUpdate({ _id: mongoDB.ObjectId(id) }, { $set: upDoc })
                 .then((doc) => {
                     if (doc) {
                         res.send(doc)
