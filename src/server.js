@@ -22,6 +22,7 @@ app.delete("/products/:id",(req,res)=>{
 })
 
 app.patch("/products/:id",(req,res)=>{
+    console.log(req.body);
     impFunctions.updateProduct(req,res)
 })
 

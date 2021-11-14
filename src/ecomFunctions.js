@@ -2,7 +2,7 @@
 
 const mongoDB = require("mongodb"),
     MongoClient = mongoDB.MongoClient,
-    mongoURL = "mongodb://localhost:27017",
+    mongoURL = process.env.MONGOURL,
     collName = "products",
     dbName = "E-COMMERCE";
 
@@ -76,10 +76,7 @@ function deleteProduct(req, res) {
             const dbo = db.db(dbName)
             dbo.collection(collName).deleteOne({ id: Number(id) })
                 .then((doc) => {
-                    if (doc) {
-                        res.send(doc).status(200)
-                    }
-                    res.sendStatus(404)
+                        res.send(doc)
                 })
         })
         .catch((err) => {
@@ -96,9 +93,12 @@ function updateProduct(req, res) {
     MongoClient.connect(mongoURL)
         .then((db) => {
             const dbo = db.db(dbName)
-            dbo.collection(collName).findOneAndUpdate({ id: Number(id) }, { $set: upDoc })
+            dbo.collection(collName).findOneAndUpdate({ id: id }, { $set: upDoc })
                 .then((doc) => {
-                    res.send(doc)
+                    if (doc) {
+                        res.send(doc)
+                    }
+                    res.sendStatus(404)
                 })
         })
         .catch((err) => {
@@ -109,7 +109,7 @@ function updateProduct(req, res) {
 
 // cart//
 function addToCart(req, res) {
-    const id = { _id: mongoDB.ObjectId("618d8eb52f14ad79bcbfde8e") };
+    const id = { _id: mongoDB.ObjectId("6188d09a1e604a146a8d3a03") };
     const addedProd = req.body
     console.log(addedProd);
     MongoClient.connect(mongoURL)
@@ -126,7 +126,7 @@ function addToCart(req, res) {
 }
 
 function deleteFromCart(req, res) {
-    const id = { _id: mongoDB.ObjectId("618d8eb52f14ad79bcbfde8e") };
+    const id = { _id: mongoDB.ObjectId("6188d09a1e604a146a8d3a03") };
     const cartId = req.body
     MongoClient.connect(mongoURL)
         .then((db) => {
@@ -140,7 +140,7 @@ function deleteFromCart(req, res) {
 }
 
 function deleteCartItems(req,res) {
-    const id = { _id: mongoDB.ObjectId("618d8eb52f14ad79bcbfde8e") };
+    const id = { _id: mongoDB.ObjectId("6188d09a1e604a146a8d3a03") };
     const cartId = req.body
     MongoClient.connect(mongoURL)
         .then((db) => {
