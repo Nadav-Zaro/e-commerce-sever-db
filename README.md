@@ -4,4 +4,6 @@
 To see my site</p>
 go to:
 https://e-commerce-server-db.herokuapp.com/
+<a href=https://e-commerce-server-db.herokuapp.com/>
 <img src=https://i.ibb.co/jRSJFzJ/e-commerce-pic.png styly="border:2px inset white">
+</a>
